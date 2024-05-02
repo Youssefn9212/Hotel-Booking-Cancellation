@@ -146,7 +146,7 @@ def main():
         scaler.fit(data)
         input_norm = scaler.transform(input_data)
         # load model
-        model = load('Phase 4.py')
+        model = load('Phase 4 Model.joblib')
         # make prediction
         result = model.predict_proba(input_norm)
         proba = np.round(result[0][1]*100,2)
