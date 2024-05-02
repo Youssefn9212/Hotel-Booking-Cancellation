@@ -44,7 +44,6 @@ def main():
     st.sidebar.number_input('Booking Lead Time', min_value=0, key='lead_time')
     st.sidebar.number_input('Total Number of Stays', min_value=0,max_value=69,step=1, key='total_stays')
     st.sidebar.number_input('Number of Kids', min_value=1,max_value=10,step=1, key='kids')
-    st.sidebar.header('Select Meal Type')
     meal_options = ['BB', 'FB', 'HB', 'SC']
     meal_type = st.sidebar.selectbox('Meal Type', options=meal_options)
     meal_df = pd.DataFrame(columns=meal_options)
@@ -137,6 +136,9 @@ def main():
     distribution_df['TA/TO'][0],  # Value for 'TA/TO' distribution channel
     distribution_df['GDS'][0],  # Value for 'GDS' distribution channel
 ]).reshape(1, -1)
+        
+st.write("Input Data Array:")
+st.write(input_data)
 
         # pre-process input data
         #data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
