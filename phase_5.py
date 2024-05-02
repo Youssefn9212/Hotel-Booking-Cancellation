@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import streamlit as st
 from streamlit import session_state as ss
-
+from joblib import load
 
 
 def main():
