@@ -80,7 +80,7 @@ def main():
             market_df[option] = [1]
         else:
             market_df[option] = [0]
-    distribution_options = ['Direct', 'Corporate', 'TA/TO','GDS']
+    distribution_options = ['Dist Direct', 'Dist Corporate', 'Dist TA/TO','GDS']
     distribution_type = st.sidebar.selectbox('Distribution Channel', options=distribution_options)
 
     distribution_df = pd.DataFrame(columns=distribution_options)
@@ -131,19 +131,33 @@ def main():
     market_df['Complementary'][0],  # Value for 'Complementary' market type
     market_df['Groups'][0],  # Value for 'Groups' market type
     market_df['Aviation'][0],  # Value for 'Aviation' market type
-    distribution_df['Direct'][0],  # Value for 'Direct' distribution channel
-    distribution_df['Corporate'][0],  # Value for 'Corporate' distribution channel
-    distribution_df['TA/TO'][0],  # Value for 'TA/TO' distribution channel
+    distribution_df['Dist Direct'][0],  # Value for 'Direct' distribution channel
+    distribution_df['Dist Corporate'][0],  # Value for 'Corporate' distribution channel
+    distribution_df['Dist TA/TO'][0],  # Value for 'TA/TO' distribution channel
     distribution_df['GDS'][0],  # Value for 'GDS' distribution channel
 ]).reshape(1, -1)
         
         # pre-process input data
-        data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
-        scaler = StandardScaler()
-        scaler.fit(data)
-        input_norm = scaler.transform(input_data)
-        # load model
-        model = load('Phase 4 Model.joblib')
+        # Apply logarithmic transformation to lead_time
+input_data[:, 12] = np.log(input_data[:, 12] + 1)  # Add 1 to avoid log(0) if lead_time is 0
+
+# Pre-process input data
+data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
+scaler = StandardScaler()
+scaler.fit(data)
+
+# Apply standard scaling to all features except lead_time
+input_norm = scaler.transform(input_data[:, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]])
+
+# Concatenate the lead_time column (after transformation) with the standardized features
+input_norm = np.concatenate((input_norm, input_data[:, 12].reshape(-1, 1)), axis=1)
+
+# Load model
+model = load('Phase 4 Model.joblib')
+
+# Make prediction
+result = model.predict_proba(input_norm)
+
         # make prediction
         result = model.predict_proba(input_norm)
         proba = np.round(result[0][1]*100,2)
