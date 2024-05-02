@@ -137,10 +137,10 @@ def main():
     distribution_df['GDS'][0],  # Value for 'GDS' distribution channel
 ]).reshape(1, -1)
         
-        data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
-        scaler = StandardScaler()
-        scaler.fit(data)
-        input_norm = scaler.transform(input_data)
+        #data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
+        #scaler = StandardScaler()
+        #scaler.fit(data)
+        #input_norm = scaler.transform(input_data)
         # load model
         model = load('Phase 4 Model.joblib')
         # make prediction
