@@ -1,9 +1,8 @@
 import pandas as pd
 import numpy as np
-import load, dump
 import streamlit as st
 from streamlit import session_state as ss
-import StandardScaler
+
 
 def main():
     # main page
