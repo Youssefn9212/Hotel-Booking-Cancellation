@@ -137,31 +137,28 @@ def main():
     distribution_df['GDS'][0],  # Value for 'GDS' distribution channel
 ]).reshape(1, -1)
         
-st.write("Input Data Array:")
-st.write(input_data)
-
         # pre-process input data
-        #data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
-        #scaler = StandardScaler()
-        #scaler.fit(data)
-       # input_norm = scaler.transform(input_data)
+        data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
+        scaler = StandardScaler()
+        scaler.fit(data)
+        input_norm = scaler.transform(input_data)
         # load model
-       # model = load('Phase 4 Model.joblib')
+        model = load('Phase 4 Model.joblib')
         # make prediction
-       # result = model.predict_proba(input_norm)
-       # proba = np.round(result[0][1]*100,2)
+        result = model.predict_proba(input_norm)
+        proba = np.round(result[0][1]*100,2)
         # display prediction
-        #if proba < 50:
-           # color = '#7ABD91'
-       # else:
-           # color = '#FF6962'
-       # st.markdown(f'''
-       # <center><font color={color} size=12> {proba}% </font></center>
-        #''', unsafe_allow_html=True)
-       # if proba < 50:
-          #  st.balloons()
-       # else:
-          #  st.snow()
+        if proba < 50:
+            color = '#7ABD91'
+        else:
+            color = '#FF6962'
+        st.markdown(f'''
+        <center><font color={color} size=12> {proba}% </font></center>
+        ''', unsafe_allow_html=True)
+        if proba < 50:
+            st.balloons()
+        else:
+            st.snow()
 
 
 if __name__ == '__main__':
