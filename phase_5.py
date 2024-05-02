@@ -137,27 +137,12 @@ def main():
     distribution_df['GDS'][0],  # Value for 'GDS' distribution channel
 ]).reshape(1, -1)
         
-        # pre-process input data
-        # Apply logarithmic transformation to lead_time
-input_data[:, 12] = np.log(input_data[:, 12] + 1)  # Add 1 to avoid log(0) if lead_time is 0
-
-# Pre-process input data
-data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
-scaler = StandardScaler()
-scaler.fit(data)
-
-# Apply standard scaling to all features except lead_time
-input_norm = scaler.transform(input_data[:, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]])
-
-# Concatenate the lead_time column (after transformation) with the standardized features
-input_norm = np.concatenate((input_norm, input_data[:, 12].reshape(-1, 1)), axis=1)
-
-# Load model
-model = load('Phase 4 Model.joblib')
-
-# Make prediction
-result = model.predict_proba(input_norm)
-
+        data = pd.read_csv('Post-cleaning Data.csv', index_col=0)
+        scaler = StandardScaler()
+        scaler.fit(data)
+        input_norm = scaler.transform(input_data)
+        # load model
+        model = load('Phase 4 Model.joblib')
         # make prediction
         result = model.predict_proba(input_norm)
         proba = np.round(result[0][1]*100,2)
@@ -173,6 +158,7 @@ result = model.predict_proba(input_norm)
             st.balloons()
         else:
             st.snow()
+
 
 
 if __name__ == '__main__':
