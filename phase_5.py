@@ -1,3 +1,4 @@
+pip install joblib
 import pandas as pd
 import numpy as np
 from joblib import load, dump
