@@ -155,10 +155,7 @@ def main():
         st.markdown(f'''
         <center><font color={color} size=12> {proba}% </font></center>
         ''', unsafe_allow_html=True)
-        if proba < 50:
-            st.balloons()
-        else:
-            st.snow()
+        
 
 
 
