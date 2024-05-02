@@ -1,7 +1,5 @@
-pip install joblib
 import pandas as pd
 import numpy as np
-from joblib import load, dump
 import streamlit as st
 from streamlit import session_state as ss
 from sklearn.preprocessing import StandardScaler
