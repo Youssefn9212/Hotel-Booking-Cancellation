@@ -1,4 +1,20 @@
 # Hotel Booking Cancellation Prediction
+---
+
+### **Table of Contents**
+
+1. [Introduction](#introduction)
+2. [Project Contributors](#project-contributors)
+3. [Project Phases](#project-phases)
+   - [Phase 1: Problem Identification and Specification](#phase-1-problem-identification-and-specification)
+   - [Phase 2: Data Preparation, Cleaning, and Feature Engineering](#phase-2-data-preparation-cleaning-and-feature-engineering)
+   - [Phase 3: Experimental Analysis of the Machine Learning Models](#phase-3-experimental-analysis-of-the-machine-learning-models)
+   - [Phase 4: Model Fine-Tuning and Utility Application](#phase-4-model-fine-tuning-and-utility-application)
+   - [Phase 5: Model Deployment and Future Improvements](#phase-5-model-deployment-and-future-improvements)
+4. [Conclusion](#conclusion)
+
+---
+
 
 This project aims to build a complete machine learning pipeline to forecast the probability of a potential customer canceling their hotel booking. Predictions are based on reservation criteria, including variables like arrival date, number of guests, deposit type, and more. The project is divided into **five phases**, each addressing a key step in the project deployment. Below is a detailed description of each phase.
 
