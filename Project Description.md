@@ -21,7 +21,10 @@ In the dynamic landscape of the hospitality industry, the efficiency of managing
 
 ---
 
-![Project Overview](https://github.com/user-attachments/assets/cdfc5805-635e-4ca1-852b-7a2cd0126207)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/cdfc5805-635e-4ca1-852b-7a2cd0126207" alt="Project Overview">
+</p>
+
 
 ---
 
