@@ -42,9 +42,6 @@ This project aims to build a complete machine learning pipeline to forecast the 
 
 ---
 
----
-
----
 
 #### **Phase 2: Data Preparation, Cleaning, and Feature Engineering**
 
